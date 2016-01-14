@@ -13,7 +13,7 @@
 + (BOOL)is_jb
 {
     jb_check *robotic = [[jb_check alloc] init];
-    if ([robotic check_filePath] || [robotic check_URL_SCHEME] || [robotic check_Permissions] || [robotic check_stat_for_cydia] || [robotic check_isFishHook] || [robotic check_Unusual_lib] || [robotic check_env]) {
+    if ([robotic check_filePath] || [robotic check_URL_SCHEME] || [robotic check_Permissions] || [robotic check_stat_for_cydia] || [robotic check_isFishHook] || [robotic check_Unusual_lib] || [robotic check_env] || [robotic check_signerIdentity]) {
         return YES;
     }
     return NO;
@@ -133,5 +133,17 @@
     
 }
 
+#pragma mark - 檢測 info.plist 中，是否有『{SignerIdentity, Apple iPhone OS Application Signing}』的簽名
+- (BOOL)check_signerIdentity
+{
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSDictionary *info = [bundle infoDictionary];
+    if ([info objectForKey: @"SignerIdentity"] != nil)
+    {
+        NSLog(@"signerIdentity get 'jailbreak'");
+        return YES;
+    }
+    return NO;
+}
 
 @end
