@@ -9,6 +9,7 @@
 /*
  來源參考：
  http://blog.csdn.net/yiyaaixuexi/article/details/20286929
+ http://stackoverflow.com/questions/413242/how-do-i-detect-that-an-ios-app-is-running-on-a-jailbroken-phone
  */
 
 #import <Foundation/Foundation.h>

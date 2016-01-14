@@ -29,6 +29,7 @@
                               @"/bin/bash",
                               @"/usr/sbin/sshd",
                               @"/etc/apt",
+                              @"/private/var/lib/apt/",
                               nil];
     
     
