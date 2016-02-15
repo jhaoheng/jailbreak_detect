@@ -29,7 +29,7 @@
     NSLog(@"Running in Simulator - no exec jb_check[check_filePath]");
     return NO;
     
-#endif
+#else
     
     NSArray *filePathArray = [[NSArray alloc] initWithObjects:
                               @"/Applications/Cydia.app",
@@ -54,6 +54,8 @@
     }
     
     return NO;
+    
+#endif
 }
 
 #pragma mark - cydia 的 url scheme
@@ -64,7 +66,6 @@
         return YES;
     }
     return NO;
-    
 }
 
 #pragma mark - 讀取路徑，判斷權限，一般無法讀取，權限不足
@@ -98,6 +99,14 @@
 //檢查 stat 使否有被換掉
 - (BOOL)check_isFishHook
 {
+    
+#if TARGET_OS_SIMULATOR
+    
+    NSLog(@"Running in Simulator - no exec jb_check[check_filePath]");
+    return NO;
+    
+#else
+    
     int ret ;
     Dl_info dylib_info;
     int (*func_stat)(const char *, struct stat *) = stat;
@@ -110,6 +119,8 @@
         }
     }
     return NO;
+    
+#endif
 }
 
 #pragma mark - 檢測應用程式環境是否被連接了異常動態庫
