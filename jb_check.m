@@ -23,6 +23,14 @@
 #pragma mark - 判定越獄文件
 - (BOOL)check_filePath
 {
+    
+#if TARGET_OS_SIMULATOR
+    
+    NSLog(@"Running in Simulator - no exec jb_check[check_filePath]");
+    return NO;
+    
+#endif
+    
     NSArray *filePathArray = [[NSArray alloc] initWithObjects:
                               @"/Applications/Cydia.app",
                               @"/Library/MobileSubstrate/MobileSubstrate.dylib",
